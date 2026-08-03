@@ -1,0 +1,29 @@
+CM 
+CM forw: 90, 0 ; back: 90, 180
+CE
+SY DW=4.161e-3
+SY DL=3.359e-3
+SY NL=10	'cuadrados division L
+SY NW=6	'cuadrados division W
+SY NS=6
+SY L=DL*NL
+SY W=DW*NW
+SY H=9.443e-3
+SY F=0
+SY R=0.0005
+GW	1	1	-W/2	0	H	-W/2	DL	H	R	'First length-wise segment
+GM	1	NL-1	0	0	0	0	DL	0	1	'First length-wise wire
+GM	NL	NW	0	0	0	DW	0	0	1	'Rest of length-wise wires
+GW	(NW+1)*NL+1	1	-W/2	0	H	-W/2+DW	0	H	R	'First width-wise segment
+GM	1	NW-1	0	0	0	DW	0	0	(NW+1)*NL+1	'First width-wise wire
+GM	NW	NL	0	0	0	0	DL	0	(NW+1)*NL+1	'Rest of width-wise wires
+GW	NW*(NL+1)+(NW+1)*NL+1	1	0	F	0	0	F	H	R	'Feed segment
+GW	NW*(NL+1)+(NW+1)*NL+2	1	-W/2	L	0	-W/2	L	H	R	'First short circuit segment
+GM	1	NS	0	0	0	DW	0	0	NW*(NL+1)+(NW+1)*NL+2	'Rest of short circuit segments
+GE	1
+GN	1
+EK
+EX	0	NW*(NL+1)+(NW+1)*NL+1	1	0	1	0	0
+FR,0,1,0,0,2400
+PQ -1
+PT -1

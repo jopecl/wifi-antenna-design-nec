@@ -1,0 +1,6 @@
+# src/parse_nec_output.py uses the standard library only.
+# These are needed only for the measurement-plot notebooks:
+pandas>=1.5
+matplotlib>=3.6
+seaborn>=0.12
+openpyxl>=3.1

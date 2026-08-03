@@ -1,0 +1,23 @@
+# Raw NEC2 sweep output — 15.6 MB of pattern samples.
+# Regenerate the summary with src/parse_nec_output.py; see data/README.md
+*.out
+YAGI_REFLECTOR.out
+
+# VNA raw calibration file (5 MB, instrument-specific)
+*.cal
+
+# Third-party VNA software
+vnaJ*.jar
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+__MACOSX/
+.idea/
+.vscode/
