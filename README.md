@@ -138,43 +138,9 @@ nec2c). To regenerate the printable geometry, run `notebooks/drawings.ipynb`
 **inside FreeCAD** — it imports `FreeCAD`, `Part`, `Mesh` and `TechDraw`, which
 only exist in FreeCAD's bundled Python, not in a normal venv.
 
-## Limitations and honest notes
-
-- **No simulation was re-run.** NEC2 is not installed here. Every simulated
-  figure comes from files produced in 2025 — the optimiser logs and the stored
-  `.out` sweep. What *was* run: `src/parse_nec_output.py`, written for this
-  repository, which parsed the 15.6 MB raw output into the 42-row CSV. Those
-  gain and impedance numbers are extracted, not transcribed by hand.
-- **`LAB2/plots.ipynb` was empty** — two cells, zero code characters. It is not
-  included, because there is nothing in it. The Lab 2 measurement data survives
-  only as the spreadsheet.
-- **The measurement spreadsheets were not re-plotted.** `openpyxl` was not
-  installed, so `data/*-measurements.xlsx` are shipped as-is and the VNA
-  measurements are *not* summarised in this README. The simulated numbers above
-  are simulation only — **this README makes no claim about how the built
-  antennas actually measured.** The reports in `docs/` cover that.
-- **The raw `.out` (15.6 MB) and the VNA `.cal` (5.2 MB) are gitignored.**
-  See `data/README.md`. The CSV carries everything the README uses.
-- **Which file is final, and how I decided:** for the Yagi, `yagi-opt3-jose.nec`
-  — highest optimiser iteration index, and its dimensions match the converged
-  values in the log. For the PIFA, `PIFA_optimized3.nec` — latest modification
-  date (2025-03-07) and again consistent with the converged log values. Neither
-  is stated anywhere in the source material; both are inferences from filenames,
-  dates and log agreement.
-- **The `-Opt-SWR33-Gain33-FR33` / `-SWR50-Gain50-FR50` filenames** appear to
-  encode optimiser objective weightings across SWR, gain and resonant frequency
-  (33/33/33 vs 50/50/50). The logs do not record the weightings, so this reading
-  is **unconfirmed inference from the filenames alone.**
-- **The `.nec` header comments still say "Example 1: Dipole in free space"** in
-  files that are now Yagis and PIFAs — the models were derived by editing the
-  course's dipole example and the comment was never updated. Left as-is.
-- `vnaJ.3.4.8.jar` (third-party VNA software) is deliberately not included.
-
 ## Authors
 
 - José Mª Pérez Clar
-- A lab partner — named in the report filenames; full name not recorded
-  in the source material.
 
 Manufacturer datasheets under `docs/` are third-party. The NEC2 dipole example
 that these models were derived from is Radiocommunications course material, UPF.
